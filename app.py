@@ -26,5 +26,7 @@ def getData():
         return "Error", 500
 
 if __name__ == '__main__':
+    print("app started above")
     app.run()
     print("app started")
+    
