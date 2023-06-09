@@ -48,5 +48,5 @@ def predictImage(imageEnf):
     max_probability = predicted_probabilities[0, max_probability_index]  # Assuming a single test image
     class_label = "Infected" if max_probability_class == 1 else "Non-Infected"
     result = f"{max_probability * 100:.2f}%"
-
+    del imageEnf
     return predictions, result
