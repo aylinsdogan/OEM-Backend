@@ -10,18 +10,21 @@ CORS(app)
 @app.route('/data', methods=['PUT'])
 def getData():
     if request.method == 'PUT':
-        print("request received")
-        data = request.get_json()
-        image = data['data']
-        predictions, result = predictImage(image)
-        # Convert the ndarray to a Python list
-        predictions = predictions.tolist()
-        response = {
-            'predictions': predictions,
-            'result': result
-        }
-        # Return the response as JSON
-        return jsonify(response), 200
+        try:
+            print("request received")
+            data = request.get_json()
+            image = data['data']
+            predictions, result = predictImage(image)
+            # Convert the ndarray to a Python list
+            predictions = predictions.tolist()
+            response = {
+                'predictions': predictions,
+                'result': result
+            }
+            # Return the response as JSON
+            return jsonify(response), 200
+        except:
+            print("Error")
     else:
         return "Error", 500
 
